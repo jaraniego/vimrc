@@ -84,11 +84,11 @@ set grepprg=/bin/grep\ -nH
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Nerd Tree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:NERDTreeWinPos = "right"
+let g:NERDTreeWinPos = "left"
 let NERDTreeShowHidden=0
 let NERDTreeIgnore = ['\.pyc$', '__pycache__']
 let g:NERDTreeWinSize=35
-map <leader>nn :NERDTreeToggle<cr>
+map <leader>t :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
 
@@ -154,12 +154,25 @@ nnoremap <silent> <leader>z :Goyo<cr>
 " => Ale (syntax checker and linter)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:ale_linters = {
-\   'javascript': ['jshint'],
+\   'javascript': ['eslint', 'prettier'],
+\   'typescript': ['eslint', 'prettier'],
+\   'sass': ['stylelint'],
+\   'typescriptreact': ['eslint', 'prettier'],
+\   'dart': ['dartfmt'],
 \   'python': ['flake8'],
 \   'go': ['go', 'golint', 'errcheck']
 \}
 
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
+
+let g:ale_fixers = {
+\ 'dart': ['dartfmt'],
+\ 'html': ['tidy'],
+\ 'sass': ['stylelint'],
+\ 'typescript': ['eslint', 'prettier'],
+\ 'javascript': ['eslint', 'prettier'],
+\ 'typescriptreact': ['eslint', 'prettier'],
+\}
 
 " Disabling highlighting
 let g:ale_set_highlights = 0
